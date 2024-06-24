@@ -1,23 +1,50 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Content from './components/content/content';
+import Sidebar from './components/sidebar/sidebar';
+import { CONTACTS, LOGGEDIN_CONTACT } from './constants';
 
 function App() {
+
+  const [selectedContact, setSelectedContact] = useState(CONTACTS[0])
+  const [chatData, setChatData] = useState({})
+
+  const changeContact = (newContact) => {
+    console.log('changeContact: ', newContact)
+    setSelectedContact(newContact)
+  }
+
+  const addChat = (contact, message) => {
+    console.log('addChat:start ', contact, message)
+    let chatDataCopy = {...chatData}
+    console.log('chatDataCopy:start ', chatDataCopy)
+    let updatedMsgList = chatDataCopy?.[contact.id] ?? []
+    updatedMsgList.push({
+      from: LOGGEDIN_CONTACT.id,
+      message: message,
+      timestamp: new Date()
+    })
+    chatDataCopy = {
+      ...chatDataCopy,
+      [contact.id]: updatedMsgList
+    }
+
+    console.log('chatDataCopy:end ', chatDataCopy)
+
+    setChatData(chatDataCopy)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload. Test
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Sidebar 
+        contact={selectedContact} 
+        onContactChange={newContact => changeContact(newContact)}
+      />
+      <Content 
+        contact={selectedContact} 
+        chatList={chatData[selectedContact.id]} 
+        onAddChat={(contact, message) => addChat(contact, message)}
+      />
     </div>
   );
 }

@@ -5,6 +5,11 @@ A simple messenger app built using React.JS and Javascript
 1. The user should be able to write messages in the chat window and see them appear.
 2. The user should be able to select a friend and see his chat with this friend.
 
+## Screenshot
+<img width="1392" alt="image" src="https://github.com/ronyv/Simple-React-Messenger/assets/15177814/cb5bccd6-c4d9-48f9-b5cf-939e908925f6">
+
+
+
 
 # Getting Started with Create React App
 

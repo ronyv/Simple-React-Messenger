@@ -1,0 +1,35 @@
+
+.sidebar {
+    width: 25%;
+    background-color: #f4f4f4;
+    border-right: 1px solid #ccc;
+    padding: 20px;
+  }
+  
+  .sidebar h2 {
+    margin: 0px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0px;
+  }
+  
+  .sidebar li {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .sidebar li:hover {
+    background-color: #ddd;
+  }
+
+  .contact {
+    border-bottom: 1px solid #ccc;
+  }
+
+  .activeContact {
+    background-color: #ddd;
+    border-bottom: 1px solid #ccc;
+  }
+  
