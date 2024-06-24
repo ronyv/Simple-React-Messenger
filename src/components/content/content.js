@@ -10,7 +10,6 @@ function Content({contact, onAddChat, chatList = []}) {
 
     const scrollToBottom = () => {
         const chatContent = chatContentRef.current;
-        console.log('scrollToBottom: ', chatContent);
         if (chatContent) {
             chatContent.scrollTop = chatContent.scrollHeight;
         }
@@ -26,7 +25,6 @@ function Content({contact, onAddChat, chatList = []}) {
 
     const handleKeyPress = (event) => {
         if (event.key === 'Enter' && message?.trim().length > 0) {
-            console.log('Enter key pressed...')
             sendMessage();
           }
     }
@@ -56,7 +54,9 @@ function Content({contact, onAddChat, chatList = []}) {
             onChange={event => setMessage(event.currentTarget.value)} 
             onKeyDown={handleKeyPress}
         />
-        <button onClick={() => sendMessage()}>
+        <button 
+            disabled={message?.trim().length === 0}
+            onClick={() => sendMessage()}>
         Send
         </button>
     </div>

@@ -15,7 +15,6 @@ function App() {
   }
 
   const addChat = (contact, message) => {
-    console.log('addChat:start ', contact, message)
     let chatDataCopy = {...chatData}
     console.log('chatDataCopy:start ', chatDataCopy)
     let updatedMsgList = chatDataCopy?.[contact.id] ?? []
